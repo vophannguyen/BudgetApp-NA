@@ -14,13 +14,42 @@ model User {
   id       Int    @id @default(autoincrement())
   username String @unique
   password String
-  tasks    Task[]
+  income Income[]
+  need Need[]
+  want Want[]
+  saving Saving[]
 }
 
-model Task {
-  id          Int     @id @default(autoincrement())
-  description String
-  done        Boolean @default(false)
-  userId      Int
-  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+model Income{
+  id     Int @id @default(autoincrement())
+  income Float @default(0.0)
+  month  String
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+model Need {
+  id       Int @id @default(autoincrement())
+  category String
+  spent    Float
+  month    String
+  userId   Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+model Want{
+  id Int @id @default(autoincrement())
+  category String
+  spent Float
+  month String
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+model Saving{
+  id Int @id @default(autoincrement())
+  category String
+  spent Float
+  month String
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
