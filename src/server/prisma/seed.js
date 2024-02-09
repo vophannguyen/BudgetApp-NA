@@ -1,5 +1,10 @@
 const prisma = require("../prisma");
 
+const need = [{ category: "House Paymet", spent: 1450, month: "1" }];
+
+const want = [{ category: "Food", spent: 1500, month: "1" }];
+
+const saving = [{ category: "401k", spent: 100, month: "1" }];
 /** Seeds the database with a user and some tasks */
 const seed = async () => {
   await prisma.user.upsert({
@@ -10,12 +15,26 @@ const seed = async () => {
     create: {
       username: "foo",
       password: "bar",
-      tasks: {
-        create: [
-          { description: "task 1" },
-          { description: "task 2" },
-          { description: "task 3" },
-        ],
+      need: {
+        create: need.map((need) => ({
+          category: need.category,
+          spent: need.spent,
+          month: need.month,
+        })),
+      },
+      want: {
+        create: want.map((want) => ({
+          category: want.category,
+          spent: want.spent,
+          month: want.month,
+        })),
+      },
+      saving: {
+        create: saving.map((saving) => ({
+          category: saving.category,
+          spent: saving.spent,
+          month: saving.month,
+        })),
       },
     },
   });
