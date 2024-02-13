@@ -11,3 +11,15 @@
 - /api/need create expense need information (Need login)
 - /api/want create expense want information (Need login)
 - /api/saving create expense saving information (Need login)
+
+# Put (update)
+
+- /api/need/:id
+- /api/want/:id
+- /api/saving/:id
+
+# Delete
+
+- /api/need/:id
+- /api/want/:id
+- /api/saving/:id
