@@ -11,14 +11,28 @@ import Tasks from "./features/tasks/Tasks";
 import Root from "./layout/Root.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Expense from "./features/expense/Expense.jsx";
+import Analysis from "./features/analysis/Analysis.jsx";
+import Need from "./features/expense/need/Need.jsx";
+import Want from "./features/expense/want/Want.jsx";
+import Saving from "./features/expense/saving/Saving.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     children: [
-      { path: "/", element: <Tasks /> },
-      { path: "/tasks", element: <Tasks /> },
+      { path: "/", element: <p>Home</p> },
+      {
+        path: "/expense/",
+        element: <Expense />,
+        children: [
+          { path: "need", element: <Need /> },
+          { path: "want", element: <Want /> },
+          { path: "saving", element: <Saving /> },
+        ],
+      },
       { path: "/login", element: <AuthForm /> },
+      { path: "/analysis", element: <Analysis /> },
     ],
   },
 ]);
