@@ -6,3 +6,7 @@ export const categoryNeed = [
   },
   { value: "property tax bill", lable: "Property tax bill" },
 ];
+export const month = [
+  { value: "1", lable: "Jan" },
+  { value: "2", lable: "Feb" },
+];
